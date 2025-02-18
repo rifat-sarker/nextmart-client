@@ -15,18 +15,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { registrationSchema } from "./registerValidaiton";
 import Link from "next/link";
+import { registerUser } from "@/services/AuthService";
+import { toast } from "sonner";
 
 const RegisterForm = () => {
   const form = useForm({
     resolver: zodResolver(registrationSchema),
   });
 
+  const {formState: {isSubmitting}} = form
   const password = form.watch("password");
   const passwordConfirm = form.watch("passwordConfirm");
 
   console.log(password, passwordConfirm);
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      const res = await registerUser(data);
+      if (res?.success) {
+        toast.success(res?.message);
+      } else {
+        toast.error(res?.message);
+      }
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -105,7 +118,7 @@ const RegisterForm = () => {
             className="my-4 w-full mt-5 "
             type="submit"
           >
-            Register
+           {isSubmitting ? "Registering..." : "Register"}
           </Button>
         </form>
       </Form>
