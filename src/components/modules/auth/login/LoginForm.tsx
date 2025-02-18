@@ -15,9 +15,10 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
-import { loginUser } from "@/services/AuthService";
+import { loginUser, reCaptchaVerify } from "@/services/AuthService";
 import { toast } from "sonner";
 import { loginSchema } from "./loginValidaiton";
+import { useState } from "react";
 
 const LoginForm = () => {
   const form = useForm({
@@ -28,8 +29,17 @@ const LoginForm = () => {
     formState: { isSubmitting },
   } = form;
 
-  const handleReCatpcha = (value: string | null) => {
-    console.log(value);
+  const [reCaptchStatus, setReCaptchStatus] = useState(false);
+
+  const handleReCatpcha = async (value: string | null) => {
+    try {
+      const res = await reCaptchaVerify(value!);
+      if (res?.success) {
+        setReCaptchStatus(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -88,12 +98,16 @@ const LoginForm = () => {
           <div className="flex mt-5 w-full">
             <ReCAPTCHA
               className="mx-auto"
-              sitekey={`${process.env.NEXT_PUBLIC_CLIENT_KEY}`}
+              sitekey={process.env.NEXT_PUBLIC_CLIENT_KEY!}
               onChange={handleReCatpcha}
             />
           </div>
 
-          <Button className="my-4 w-full mt-5 " type="submit">
+          <Button
+            disabled={reCaptchStatus ? false : true}
+            className="my-4 w-full mt-5 "
+            type="submit"
+          >
             {isSubmitting ? "Loggin..." : "Login"}
           </Button>
         </form>
