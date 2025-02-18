@@ -21,6 +21,10 @@ const RegisterForm = () => {
     resolver: zodResolver(registrationSchema),
   });
 
+  const password = form.watch("password");
+  const passwordConfirm = form.watch("passwordConfirm");
+
+  console.log(password, passwordConfirm);
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
@@ -87,11 +91,20 @@ const RegisterForm = () => {
                 <FormControl>
                   <Input type="password" {...field} value={field.value || ""} />
                 </FormControl>
-                <FormMessage />
+                {passwordConfirm && password !== passwordConfirm ? (
+                  <FormMessage> Passwords do not match</FormMessage>
+                ) : (
+                  <FormMessage />
+                )}
               </FormItem>
             )}
           />
-          <Button className="my-4 w-full mt-5" type="submit">
+          <Button
+            // disabled={passwordConfirm && password !== passwordConfirm ? true : false}
+            disabled={!passwordConfirm && password !== passwordConfirm}
+            className="my-4 w-full mt-5 "
+            type="submit"
+          >
             Register
           </Button>
         </form>
