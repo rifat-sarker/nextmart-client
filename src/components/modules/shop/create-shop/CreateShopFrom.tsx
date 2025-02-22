@@ -18,6 +18,7 @@ import { useState } from "react";
 
 import { toast } from "sonner";
 import ImagePreviewer from "./ImagePreviewer";
+import { createShop } from "@/services/Shop";
 
 export default function CreateShopForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
@@ -29,34 +30,34 @@ export default function CreateShopForm() {
     formState: { isSubmitting },
   } = form;
 
-//   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-//     const servicesOffered = data?.servicesOffered
-//       .split(",")
-//       .map((service: string) => service.trim())
-//       .filter((service: string) => service !== "");
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const servicesOffered = data?.servicesOffered
+      .split(",")
+      .map((service: string) => service.trim())
+      .filter((service: string) => service !== "");
 
-//     const modifiedData = {
-//       ...data,
-//       servicesOffered: servicesOffered,
-//       establishedYear: Number(data?.establishedYear),
-//     };
+    const modifiedData = {
+      ...data,
+      servicesOffered: servicesOffered,
+      establishedYear: Number(data?.establishedYear),
+    };
 
-//     try {
-//       const formData = new FormData();
-//       formData.append("data", JSON.stringify(modifiedData));
-//       formData.append("logo", imageFiles[0] as File);
+    try {
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(modifiedData));
+      formData.append("logo", imageFiles[0] as File);
 
-//       const res = await createShop(formData);
+      const res = await createShop(formData);
 
-//       console.log(res);
+      console.log(res);
 
-//       if (res.success) {
-//         toast.success(res.message);
-//       }
-//     } catch (err: any) {
-//       console.error(err);
-//     }
-//   };
+      if (res.success) {
+        toast.success(res.message);
+      }
+    } catch (err: any) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-2xl p-5 my-5">
@@ -70,9 +71,7 @@ export default function CreateShopForm() {
         </div>
       </div>
       <Form {...form}>
-        <form>
-          {" "}
-          {/* onSubmit={form.handleSubmit(onSubmit)} */}
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <FormField
               control={form.control}
