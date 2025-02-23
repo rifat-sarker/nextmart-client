@@ -36,16 +36,16 @@ const LoginForm = () => {
   const redirect = searchParams.get("redirectPath");
   const router = useRouter();
 
-  const handleReCatpcha = async (value: string | null) => {
-    try {
-      const res = await reCaptchaVerify(value!);
-      if (res?.success) {
-        setReCaptchStatus(true);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleReCatpcha = async (value: string | null) => {
+  //   try {
+  //     const res = await reCaptchaVerify(value!);
+  //     if (res?.success) {
+  //       setReCaptchStatus(true);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -105,16 +105,16 @@ const LoginForm = () => {
               </FormItem>
             )}
           />
-          <div className="flex mt-5 w-full">
+          {/* <div className="flex mt-5 w-full">
             <ReCAPTCHA
               className="mx-auto"
               sitekey={process.env.NEXT_PUBLIC_CLIENT_KEY!}
               onChange={handleReCatpcha}
             />
-          </div>
+          </div> */}
 
           <Button
-            disabled={reCaptchStatus ? false : true}
+            // disabled={reCaptchStatus ? false : true}
             className="my-4 w-full mt-5 "
             type="submit"
           >
