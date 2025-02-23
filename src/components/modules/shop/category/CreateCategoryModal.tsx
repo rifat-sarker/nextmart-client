@@ -24,6 +24,7 @@ import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import ImagePreviewer from "../create-shop/ImagePreviewer";
+import { createCategory } from "@/services/Category";
 
 const CreateCategoryModal = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
