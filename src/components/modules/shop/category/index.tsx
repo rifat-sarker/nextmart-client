@@ -1,10 +1,10 @@
 "use client";
 import { ICategory } from "@/types";
-import CreateCategoryModal from "./CreateCategoryModal";
-import { NHTable } from "@/components/ui/core/NHTable";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import { Trash } from "lucide-react";
+import CreateCategoryModal from "./CreateCategoryModal";
+import { NMTable } from "@/components/ui/core/NMTable";
 
 type TCategoriesProps = {
   categories: ICategory[];
@@ -72,7 +72,7 @@ const ManageCategories = ({ categories }: TCategoriesProps) => {
         <CreateCategoryModal />
       </div>
       <div className="mt-5">
-        <NHTable data={categories} columns={columns} />
+        <NMTable data={categories} columns={columns} />
       </div>
     </div>
   );
