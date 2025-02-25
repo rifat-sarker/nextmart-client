@@ -1,13 +1,14 @@
-"use client";
 
+
+import Category from "@/components/modules/home/Category";
 import HeroSection from "@/components/modules/home/HeroSection";
 
 const HomePage = () => {
   return (
     <div>
       <HeroSection />
-      {/* <Category />
-      <FeaturedProducts /> */}
+      <Category />
+      {/* <FeaturedProducts /> */}
     </div>
   );
 };
