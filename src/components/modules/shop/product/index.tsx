@@ -12,7 +12,6 @@ import { useState } from "react";
 import DiscountModal from "./DiscountModal";
 import { IMeta } from "@/types/meta";
 
-
 const ManageProducts = ({
   products,
   meta,
