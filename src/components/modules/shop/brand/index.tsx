@@ -10,9 +10,11 @@ import { deleteBrand } from "@/services/Brand";
 import { IBrand } from "@/types/brand";
 import DeleteConfirmationModal from "@/components/ui/core/NMModal/DeleteConfirmationModal";
 import { NMTable } from "@/components/ui/core/NMTable";
+import TablePagination from "@/components/ui/core/NMTable/TablePagination";
+import { IMeta } from "@/types/meta";
 
 
-const ManageBrands = ({ brands }: { brands: IBrand[] }) => {
+const ManageBrands = ({ brands,meta }: { brands: IBrand[], meta:IMeta }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -105,6 +107,7 @@ const ManageBrands = ({ brands }: { brands: IBrand[] }) => {
         onOpenChange={setModalOpen}
         onConfirm={handleDeleteConfirm}
       />
+      <TablePagination totalPage={meta?.totalPage} />
     </div>
   );
 };

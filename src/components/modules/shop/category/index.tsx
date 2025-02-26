@@ -9,12 +9,20 @@ import DeleteConfirmationModal from "@/components/ui/core/NMModal/DeleteConfirma
 import { deleteCategory } from "@/services/Category";
 import { toast } from "sonner";
 import { useState } from "react";
+import TablePagination from "@/components/ui/core/NMTable/TablePagination";
+import { IMeta } from "@/types/meta";
 
-type TCategoriesProps = {
+// type TCategoriesProps = {
+//   categories: ICategory[];
+// };
+
+const ManageCategories = ({
+  categories,
+  meta,
+}: {
   categories: ICategory[];
-};
-
-const ManageCategories = ({ categories }: TCategoriesProps) => {
+  meta: IMeta;
+}) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -105,6 +113,7 @@ const ManageCategories = ({ categories }: TCategoriesProps) => {
         onOpenChange={setModalOpen}
         onConfirm={handleDeleteConfirm}
       />
+      <TablePagination totalPage={meta?.totalPage} />
     </div>
   );
 };

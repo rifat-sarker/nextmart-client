@@ -3,13 +3,16 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 //  get all brands
-export const getAllBrands = async () => {
+export const getAllBrands = async (page?: string, limit?: string) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/brand`, {
-      next: {
-        tags: ["Brands"],
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/brand?limit=${limit}&page=${page}`,
+      {
+        next: {
+          tags: ["Brands"],
+        },
+      }
+    );
     const data = await res.json();
     return data;
   } catch (error: any) {
