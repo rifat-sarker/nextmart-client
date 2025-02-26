@@ -19,8 +19,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import NMImageUploader from "@/components/ui/core/NMImageUploader";
-
 import { Plus } from "lucide-react";
+
 
 import {
   Select,
@@ -29,17 +29,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { IBrand, ICategory } from "@/types";
 import { getAllCategories } from "@/services/Category";
 import { getAllBrands } from "@/services/Brand";
-
+import { addProduct } from "@/services/Product";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { addProduct } from "@/services/Product";
 import Logo from "@/app/assets/svgs/Logo";
 import ImagePreviewer from "../create-shop/ImagePreviewer";
-import { IBrand } from "@/types/brand";
-import { ICategory } from "@/types";
 
 export default function AddProductsForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
