@@ -16,10 +16,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-;
+import { addFlashSale } from "@/services/FlashSale";
 import { toast } from "sonner";
 import { Dispatch, SetStateAction } from "react";
-import { addFlashSale } from "@/services/FlashSale";
 
 type TModalProps = {
   selectedIds: string[];
@@ -42,6 +41,7 @@ const DiscountModal = ({ selectedIds, setSelectedIds }: TModalProps) => {
     try {
       const res = await addFlashSale(modifiedData);
       if (res.success) {
+        console.log(res);
         toast.success(res.message);
         setSelectedIds([]);
       } else {

@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
+import NMContainer from "@/components/ui/core/NMContainer";
 import ProductCard from "@/components/ui/core/ProductCard";
+
 import { IProduct } from "@/types";
 import Link from "next/link";
-
-import NMContainer from "@/components/ui/core/NMContainer";
 import CountDown from "./Countdown";
 import { getFlashSaleProducts } from "@/services/FlashSale";
 
+
 const FlashSale = async () => {
-  const { data: products } = await getFlashSaleProducts();
+  const {data:products} = await getFlashSaleProducts()
+  // console.log(products);
 
   return (
     <div className=" bg-white bg-opacity-50 pt-6 pb-8">
