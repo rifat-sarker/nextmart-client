@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import CategoryCard from "@/components/ui/CategoryCard";
+import CategoryCard from "@/components/ui/core/CategoryCard";
 import { getAllCategories } from "@/services/Category";
 import { ICategory } from "@/types";
 import Link from "next/link";

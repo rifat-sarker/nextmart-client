@@ -1,6 +1,5 @@
-
-
 import Category from "@/components/modules/home/Category";
+import FeaturedProducts from "@/components/modules/home/FeaturedProducts";
 import HeroSection from "@/components/modules/home/HeroSection";
 
 const HomePage = () => {
@@ -8,7 +7,7 @@ const HomePage = () => {
     <div>
       <HeroSection />
       <Category />
-      {/* <FeaturedProducts /> */}
+      <FeaturedProducts />
     </div>
   );
 };
