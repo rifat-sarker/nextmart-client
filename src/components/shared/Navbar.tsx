@@ -32,10 +32,12 @@ export default function Navbar() {
   return (
     <header className="border-b w-full">
       <div className="container flex justify-between items-center mx-auto h-16 px-3">
+        <Link href="/">
         <h1 className="text-2xl font-black flex items-center">
           <Logo />
           Next Mart
         </h1>
+        </Link>
         <div className="max-w-md  flex-grow">
           <input
             type="text"
@@ -47,9 +49,11 @@ export default function Navbar() {
           <Button variant="outline" className="rounded-full p-0 size-10">
             <Heart />
           </Button>
-          <Button variant="outline" className="rounded-full p-0 size-10">
-            <ShoppingBag />
-          </Button>
+          <Link href="/cart">
+            <Button variant="outline" className="rounded-full p-0 size-10">
+              <ShoppingBag />
+            </Button>
+          </Link>
           {user ? (
             <>
               <Link href="/create-shop">

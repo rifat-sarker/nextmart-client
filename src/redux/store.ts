@@ -1,15 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./features/cartSlice";
 
 // we won't do this
 // const store = configureStore({});
 
-
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      cart: cartSlice,
+    },
   });
 };
-
 
 // Infer the type of makeStore
 export type AppStore = ReturnType<typeof makeStore>;
