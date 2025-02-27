@@ -10,7 +10,7 @@ import { getFlashSaleProducts } from "@/services/FlashSale";
 
 const FlashSale = async () => {
   const {data:products} = await getFlashSaleProducts()
-  // console.log(products);
+  console.log(products);
 
   return (
     <div className=" bg-white bg-opacity-50 pt-6 pb-8">

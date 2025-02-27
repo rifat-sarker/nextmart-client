@@ -83,7 +83,7 @@ const ManageProducts = ({
     {
       accessorKey: "category",
       header: "Category",
-      cell: ({ row }) => <span>{row.original.category.name}</span>,
+      cell: ({ row }) => <span>{row.original.category?.name}</span>,
     },
     {
       accessorKey: "brand",
