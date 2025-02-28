@@ -1,19 +1,13 @@
 "use client";
 
-import {
-  ChevronsUpDown,
-  LogOut,
-  
-} from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-
   DropdownMenuItem,
   DropdownMenuLabel,
- 
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -23,7 +17,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { usePathname, useRouter } from "next/navigation";
-import { protectedRoutes } from "@/constants";
+import { protectedRoutes } from "@/contants";
 import { logout } from "@/services/AuthService";
 import { useUser } from "@/context/UserContext";
 
