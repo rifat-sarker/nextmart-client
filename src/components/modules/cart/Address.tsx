@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cities } from "@/constants/cities";
-
 import {
   citySelector,
   shippingAddressSelector,

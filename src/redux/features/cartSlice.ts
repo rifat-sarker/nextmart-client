@@ -38,17 +38,19 @@ const cartSlice = createSlice({
       const productToIncrement = state.products.find(
         (product) => product._id === action.payload
       );
-      if (productToIncrement && productToIncrement.orderQuantity > 1) {
+
+      if (productToIncrement) {
         productToIncrement.orderQuantity += 1;
         return;
       }
     },
     decrementOrderQuantity: (state, action) => {
-      const decrementToIncrement = state.products.find(
+      const productToIncrement = state.products.find(
         (product) => product._id === action.payload
       );
-      if (decrementToIncrement && decrementToIncrement.orderQuantity > 1) {
-        decrementToIncrement.orderQuantity -= 1;
+
+      if (productToIncrement && productToIncrement.orderQuantity > 1) {
+        productToIncrement.orderQuantity -= 1;
         return;
       }
     },
@@ -147,5 +149,4 @@ export const {
   updateShippingAddress,
   clearCart,
 } = cartSlice.actions;
-
 export default cartSlice.reducer;
