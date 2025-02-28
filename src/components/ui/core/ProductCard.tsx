@@ -93,7 +93,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             Buy Now
           </Button>
           <Button
-            onClick={handleAddProduct}
+            onClick={() => handleAddProduct(product)}
             disabled={product?.stock === 0}
             variant="outline"
             size="sm"
